@@ -20,7 +20,7 @@ namespace Employees.Controllers
         private readonly DataContext _dataContext;
         private readonly IEmployeService _createCode;
         private readonly IEmailService _emailService;
-        private readonly string _emailSender = "bura email yazin";
+        private readonly string _emailSender = "zeynaleg@code.edu.az";
         public EmployeeController(DataContext dataContext, IEmployeService createCode, IEmailService emailService)
         {
             _createCode = createCode;
@@ -199,7 +199,7 @@ namespace Employees.Controllers
 
             _emailService.Send(model.TargetEmail, model.Content, model.Title, _emailSender);
 
-            return RedirectToAction(nameof(Home));
+            return RedirectToAction(nameof(email));
         }
     }
 }
