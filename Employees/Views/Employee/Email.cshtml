@@ -1,0 +1,36 @@
+﻿@using Notification.ViewModel
+@model List<NotificationListViewModel>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<body class="bg-dark">
+
+    <div class="row justify-content-center">
+        <a asp-controller="Employee" asp-action="addEmail" class="btn btn-secondary ">Add</a>
+    </div>
+
+    <div class="container ">
+        <table class="table">
+            <thead>
+                <tr class="text-success">
+                    <th scope="col">FromEmail</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">TargetEmail</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var email in Model)
+                {
+                    <tr class="text-white col-lg-8">
+                        <td>@email.FromEmail</td>
+                        <td>@email.Title</td>
+                        <td>@email.TargetEmail.Email</td>
+                   
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

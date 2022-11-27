@@ -1,0 +1,44 @@
+﻿@using Employees.ViewModels
+@model List<ListViewModel>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<body class="bg-dark">
+
+    <div class="row justify-content-center">
+        <a asp-controller="Employee" asp-action="add" class="btn btn-secondary ">Add new employee</a>
+    </div>
+
+    <div class="container ">
+        <table class="table">
+            <thead>
+                <tr class="text-success">
+                    <th scope="col">Code</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">FatherName</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var employee in Model)
+                {
+                    <tr class="text-white col-lg-8">
+                        <td>@employee.Code</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.FatherName</td>
+                        <td>
+                            <a asp-controller="Employee" asp-action="update" asp-route-node="@employee.Code" class=" btn btn-warning">Update</a>
+                        </td>
+                        <td>
+                        <a asp-controller="Employee" asp-action="delete" asp-route-node="@employee.Code" class=" btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
