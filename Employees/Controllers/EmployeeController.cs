@@ -20,7 +20,7 @@ namespace Employees.Controllers
         private readonly DataContext _dataContext;
         private readonly IEmployeService _createCode;
         private readonly IEmailService _emailService;
-        private readonly string _emailSender = "zeynaleg@code.edu.az";
+        private readonly string _emailSender = "email";
         public EmployeeController(DataContext dataContext, IEmployeService createCode, IEmailService emailService)
         {
             _createCode = createCode;
