@@ -26,7 +26,7 @@ public class EmailService : IEmailService
         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
         smtp.UseDefaultCredentials = false;
         smtp.Credentials = new NetworkCredential()
-        { Password = "zekosmekos220", UserName = "zeynaleg@code.edu.az" };
+        { Password = "parol", UserName = "zeynaleg@code.edu.az" };
         smtp.SendMailAsync(message);
 
     }
