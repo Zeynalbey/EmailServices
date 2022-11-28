@@ -10,6 +10,8 @@
         <a asp-controller="Employee" asp-action="addEmail" class="btn btn-secondary ">Add</a>
     </div>
 
+
+
     <div class="container ">
         <table class="table">
             <thead>
@@ -18,6 +20,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Content</th>
                     <th scope="col">TargetEmail</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,8 +32,12 @@
                         <td>@email.Title</td>
                         <td>@email.Content</td>
                         <td>@email.TargetEmail.Email</td>
+                        <td>
+                            <a asp-controller="Employee" asp-action="deleteemail" asp-route-id="@email.Id" class=" btn btn-danger">Delete</a>
+                        </td>
                    
                     </tr>
+
                 }
             </tbody>
         </table>

@@ -99,7 +99,7 @@ namespace Employees.Controllers
                 LastName = employee.LastName,
                 FatherName = employee.FatherName,
                 Fincode = employee.Fincode,
-                Email = employee.Email
+                Email = employee.Email         
             });
         }
 
@@ -156,8 +156,9 @@ namespace Employees.Controllers
 
         [HttpGet("email", Name = "employee-email")]
         public IActionResult Email()
+        
         {
-            var model = _dataContext.Notifications.Select(b => new NotificationListViewModel(b.Title, b.FromEmail, b.TargetEmail, b.Content))
+            var model = _dataContext.Notifications.Select(b => new NotificationListViewModel(b.Id,b.Title, b.FromEmail, b.TargetEmail, b.Content))
                 .ToList();
 
             return View(model);
@@ -197,9 +198,33 @@ namespace Employees.Controllers
 
             _dataContext.SaveChanges();
 
+
             _emailService.Send(model.TargetEmail, model.Title, model.Content,  _emailSender);
+
 
             return RedirectToAction(nameof(email));
         }
+
+
+
+
+        [HttpGet("deleteemail/{id}", Name = "email-delete-invidual")]
+        public IActionResult DeleteEmail([FromRoute] int id)
+        {
+
+            var email = _dataContext.Notifications.FirstOrDefault(n => n.Id  == id);
+            if (email is null)
+            {
+                return NotFound();
+            }
+
+            _dataContext.Notifications.Remove(email);
+            _dataContext.SaveChanges();
+
+            return RedirectToAction(nameof(Email));
+        }
+      //sual var cixma
+
+
     }
 }
