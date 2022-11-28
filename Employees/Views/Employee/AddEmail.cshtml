@@ -17,18 +17,18 @@
                 <input asp-for="TargetEmail" type="text" class="form-control">
                 <span asp-validation-for="TargetEmail" class="text-danger"></span>
             </div>
-
+            <div class="form-group p-1">
+                <label asp-for="Title" class="text-white">Title</label>
+                <input asp-for="Title" type="text" class="form-control">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
             <div class="form-group p-1">
                 <label asp-for="Content" class="text-white">Content</label>
                 <input asp-for="Content" type="text" class="form-control">
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
 
-            <div class="form-group p-1">
-                <label asp-for="Title" class="text-white">Title</label>
-                <input asp-for="Title" type="text" class="form-control">
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 

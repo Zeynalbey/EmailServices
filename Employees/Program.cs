@@ -20,7 +20,7 @@ namespace Employees
             var builder = WebApplication.CreateBuilder(args);
             builder.Services
                 .AddDbContext<DataContext>(o =>
-                o.UseSqlServer("Server=DESKTOP-4V8H535;Database=AllEmployees;Trusted_Connection=True;TrustServerCertificate=True;"))
+                o.UseSqlServer(builder.Configuration.GetConnectionString("Zeynal")))
                 .AddScoped<IEmployeService, EmployeeService>()
                 .AddScoped<IEmailService, EmailService>()
                 .AddMvc()

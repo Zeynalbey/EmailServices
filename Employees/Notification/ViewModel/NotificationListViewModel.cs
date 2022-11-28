@@ -7,16 +7,17 @@ namespace Notification.ViewModel
     {
         public string Title { get; set; }
         public string FromEmail { get; set; }
+        public string Content { get; set; }
 
         public TargetEmail TargetEmail { get; set; }
 
-        public NotificationListViewModel(string title, string fromEmail, TargetEmail targetEmail)
+        public NotificationListViewModel(string title, string fromEmail, TargetEmail targetEmail, string content)
         {
             Title = title;
             FromEmail = fromEmail;
             TargetEmail = targetEmail;
+            Content = content;
 
-            // Bir tablede yaziram bele aydin olmuyacaq gerek struktru deyisem belede
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Employees.Controllers
         private readonly DataContext _dataContext;
         private readonly IEmployeService _createCode;
         private readonly IEmailService _emailService;
-        private readonly string _emailSender = "email";
+        private readonly string _emailSender = "zeynaleg@code.edu.az";
         public EmployeeController(DataContext dataContext, IEmployeService createCode, IEmailService emailService)
         {
             _createCode = createCode;
@@ -157,7 +157,7 @@ namespace Employees.Controllers
         [HttpGet("email", Name = "employee-email")]
         public IActionResult Email()
         {
-            var model = _dataContext.Notifications.Select(b => new NotificationListViewModel(b.Title, b.FromEmail, b.TargetEmail))
+            var model = _dataContext.Notifications.Select(b => new NotificationListViewModel(b.Title, b.FromEmail, b.TargetEmail, b.Content))
                 .ToList();
 
             return View(model);
@@ -197,7 +197,7 @@ namespace Employees.Controllers
 
             _dataContext.SaveChanges();
 
-            _emailService.Send(model.TargetEmail, model.Content, model.Title, _emailSender);
+            _emailService.Send(model.TargetEmail, model.Title, model.Content,  _emailSender);
 
             return RedirectToAction(nameof(email));
         }
