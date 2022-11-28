@@ -217,7 +217,8 @@ namespace Employees.Controllers
             {
                 return NotFound();
             }
-
+            var email1 = _dataContext.TargetEmails.FirstOrDefault(x => x.Id == email.TargetEmailId);
+            _dataContext.TargetEmails.Remove(email1);
             _dataContext.Notifications.Remove(email);
             _dataContext.SaveChanges();
 
